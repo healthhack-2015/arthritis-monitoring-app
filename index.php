@@ -1,27 +1,17 @@
 <?php
 /**
- * Index.php is the default template. This file is used when a more specific template can not be found to display your posts.
- * It is unlikely this template file will ever be used, but it's here to back you up just incase.
- * @package Tetris WordPress Theme
- * @since 1.0
- * @author AJ Clarke : http://wpexplorer.com
- * @copyright Copyright (c) 2012, AJ Clarke
- * @link http://wpexplorer.com
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
  */
 
-get_header(); // Loads the header.php template
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-if (have_posts()) : ?>
-<div id="blog-wrap" class="blog-isotope clearfix">   
-	<?php
-	// Loop through each post
-    while (have_posts()) : the_post();
-        get_template_part( 'content', get_post_format() );   
-    endwhile;        	
-    ?>           
-</div><!-- /post -->
-<?php
-wpex_pagination(); // Paginate your posts
-endif;
-get_footer(); //get template footer ?>
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
